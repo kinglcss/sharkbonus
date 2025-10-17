@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shark Bõnus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1330;
+      --card:#1a1730;
+      --accent:#ff8a00;
+      --muted:#c9c9d6;
+      --pill-bg:#09102a;
+      --glass: rgba(255,255,255,0.04);
+      --success:#ffd84a;
+      --white:#ffffff;
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;}
+
+    body{
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(circle at 10% 10%,rgba(255,255,255,0.02),transparent 10%),
+                  linear-gradient(180deg,#120b2b 0%,#0b0f23 100%);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      justify-content:center;
+      padding:24px 24px;
+      min-height:100vh;
+      overflow-y:auto; /* ← permite rolagem */
+    }
+
+    .container{
+        width:100%;
+        max-width:420px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border-radius:28px;
+        padding:22px 22px;
+        box-shadow: 0 10px 30px rgba(2,2,8,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+        border:1px solid rgba(255,255,255,0.035);
+        margin:auto; /* centraliza verticalmente se houver espaço */
+    }
+
+    .badge{
+      display:inline-block;
+      background: linear-gradient(90deg,#2b7cff,#5b9bff);
+      color: white;
+      font-weight:600;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:13px;
+      margin-bottom:14px;
+      box-shadow: 0 4px 12px rgba(43,124,255,0.12);
+    }
+
+    h1{
+      margin:0 0 12px 0;
+      color:var(--white);
+      font-size:22px;
+      line-height:1.15;
+      font-weight:800;
+      text-align:center; /* ← centralizado */
+    }
+
+    h1 b{
+      color:var(--accent);
+      font-weight:800;
+    }
+
+    .card-image{
+      background: linear-gradient(180deg,#12002a 0%, #2a0b4a 100%);
+      border-radius:16px;
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 8px 30px rgba(8,6,20,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+      margin: 10px 0 10px 0;
+    }
+
+    .card-image img{
+      width:100%;
+      max-width:260px;
+      border-radius:10px;
+      display:block;
+      object-fit:contain;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    }
+
+    p.lead{
+      margin:0 0 16px 0;
+      font-size:14px;
+      color:var(--muted);
+      text-align:center;
+    }
+    p.lead strong{ color:var(--white); }
+
+    .features{
+      display:grid;
+      gap:10px;
+      margin-bottom:18px;
+    }
+    .feature{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      font-size:14px;
+      color:var(--muted);
+    }
+    .dot{
+      min-width:10px;
+      height:10px;
+      border-radius:50%;
+      background: var(--success);
+      margin-top:6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .cta{
+      display:flex;
+      gap:12px;
+      flex-direction:column;
+      margin-bottom:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      border: none;
+      cursor:pointer;
+      text-decoration:none;
+      color:var(--white);
+      text-align:center;
+    }
+
+    .btn-telegram{
+      background: linear-gradient(90deg,#ff7f3c,#ff9a2b);
+      box-shadow: 0 8px 20px rgba(255,120,40,0.18);
+    }
+
+    .btn-outline{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      padding:10px 12px;
+      border-radius:10px;
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      justify-content:center;
+      width:100%;
+    }
+
+    .small-info{
+      font-size:12px;
+      text-align:center;
+      color:rgba(255,255,255,0.45);
+      margin-top:6px;
+    }
+
+    footer{
+      margin-top:10px;
+      text-align:center;
+      color:rgba(255,255,255,0.06);
+      font-size:12px;
+    }
+
+    /* Responsivo */
+    @media (max-width:480px){
+      .container{ padding:18px; border-radius:20px; }
+      h1{ font-size:20px; }
+      .card-image img{ max-width:220px; }
+      .btn{ font-size:15px; padding:12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main" aria-labelledby="main-title">
+    <div class="badge" aria-hidden="true">Exclusivo para Novos Usuários</div>
+
+    <h1 id="main-title">Gire e Ganhe <b>Bônus Aleatórios</b></h1>
+
+    <div class="card-image" role="img" aria-label="Preview da roleta do jogo">
+      <img src="roleta-sample.jpg" alt="Imagem da roleta - substitua pelo seu arquivo">
+    </div>
+
+    <p class="lead">
+      Entre no nosso <strong>Grupo do WhatsApp</strong> e receba todos os dias um <strong>bônus aleatório</strong> para testar as
+      <strong>+99 roletas</strong>. Você ainda recebe alertas de <strong>rodadas grátis</strong> e links rápidos para aproveitar as melhores oportunidades <strong>sem custo.</strong>.
+    </p>
+
+    <div class="cta">
+      <a class="btn btn-telegram" href="https://beacons.ai/bonusdecasino" target="_blank" rel="noopener noreferrer" aria-label="Nosso Site">
+        🚀 Acessar todos os links
+      </a>    
+        
+      <a class="btn btn-telegram" href="https://t.me/plataformasdachina" target="_blank" rel="noopener noreferrer" aria-label="Entrar no Telegram">
+        🚀 Entrar no Telegram
+      </a>
+
+      <a class="btn-outline" href="#detalhes" aria-label="Detalhes do evento">Detalhes do Evento</a>
+    </div>
+
+    <div class="features" role="list" aria-label="Benefícios">
+      <div class="feature" role="listitem">
+        <div class="dot" aria-hidden="true"></div>
+        <div><strong style="color:var(--white); display:block; margin-bottom:4px;">Bônus diário</strong>
+          Liberado no grupo todos os dias.
+        </div>
+      </div>
+
+      <div class="feature" role="listitem">
+        <div class="dot" aria-hidden="true"></div>
+        <div><strong style="color:var(--white); display:block; margin-bottom:4px;">Rodadas grátis</strong>
+          E ofertas em tempo real.
+        </div>
+      </div>
+
+      <div class="feature" role="listitem">
+        <div class="dot" aria-hidden="true"></div>
+        <div><strong style="color:var(--white); display:block; margin-bottom:4px;">Lista com +119 Roletas</strong>
+          FREE.
+        </div>
+      </div>
+    </div>
+
+    <p class="small-info">Sem depósito obrigatório • Conteúdo informativo • 18+</p>
+
+    <footer aria-hidden="true">© 2025</footer>
+  </main>
+</body>
+</html>
